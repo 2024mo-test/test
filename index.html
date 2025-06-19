@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8">
+  <meta name="robots" content="noindex, nofollow">
+  <title>문화유산법령 첫페이지</title>
+
+  <!-- 구글 폰트 추가 -->
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+
+  <!-- 부트스트랩 CSS 추가 -->
+  <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+
+  <!-- 부트스트랩 JS 및 제이쿼리 추가 -->
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.2/dist/js/bootstrap.bundle.min.js"></script>
+
+  <!-- 스타일 정의 -->
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Gowun+Dodum&display=swap');
+
+    * {
+      font-family: "Gowun Dodum", sans-serif;
+      color: black;
+    }
+
+    .container {
+      max-width: 760px;
+      margin: 0 auto;
+      border: 1px solid #ccc;
+      padding: 8px 10px 10px 10px;
+      /* 상단만 0 */
+      border-radius: 5px;
+      /* 모서리 둥글게 (선택) */
+      background-color: #edecec;
+      /* 옅은 회색 #fcfcfc, #f4f4f4*/
+      margin-top: 20px;
+      /* 수치를 늘리면 더 많이 띄워집니다 */
+      margin-bottom: 20px;
+      /* 또는 padding-bottom: 20px; */
+    }
+
+    .container h2 {
+      margin-bottom: 10px;
+      /* 제목과 아래 요소 간격 */
+      font-size: 1.5rem;
+      /* 예: 1.5rem = 24px 정도 */
+      font-weight: 580;
+      /* 또는 normal, bold, 500, 300 등 수치 가능 */
+    }
+
+    .title-section {
+      text-align: center;
+    }
+
+    .nickname-box {
+      margin-top: 0;
+      margin-bottom: 10px;
+      text-align: left;
+      /* 좌측 정렬 */
+    }
+
+    .nickname-input {
+      width: 180px;
+      padding: 1px;
+      margin-right: 4px;
+      border: 2px solid #f48224;
+      /* 연한 주황색 */
+      display: inline-block;
+      text-align: left;
+      padding-left: 10px;
+      /* 좌측 안쪽 여백 추가 */
+    }
+
+    .nickname-button {
+      padding: 3px 8px;
+      /* 상하 4px, 좌우 10px */
+      font-size: 0.9rem;
+      /* 글자 크기 줄이기 */
+      display: inline-block;
+      background-color: transparent;
+      /* 배경 제거 */
+      color: black;
+      /* 글자색 검정 */
+      border: 2px solid #ed7f25;
+      /* 연한 주황 테두리 */
+      border-radius: 3px;
+    }
+
+    .law-section {
+      /*border: 1px solid #ccc;*/
+      padding: 20px;
+      padding-left: 0;
+      margin-bottom: 10px;
+      /* 여기 수치를 줄이면 간격이 좁아집니다 */
+      /*background-color: #f9f9f9;*/
+      border-radius: 1px;
+      margin-left: 15px;
+      /* 또는 padding-left: 20px; */
+    }
+
+    .law-section h3 {
+      font-size: 1.10rem;
+      font-weight: normal;
+      /* bold → normal 로 변경 */
+      margin-bottom: 5x;
+      /* 간격 조절: 숫자 ↑ 늘리면 더 넓어짐 */
+    }
+
+    .law-section a {
+      margin-right: 4px;
+
+      padding: 2px 5px;
+      /* 상하 좌우 여백 줄이기 */
+      border: 1.5px solid #666;
+      /* 테두리 색 → 진한 회색 */
+      border-radius: 5px;
+      text-decoration: none;
+      color: #333;
+      /* 글자색 → 더 부드러운 어두운 회색 */
+      font-size: 0.9rem;
+      /* 글자 크기 줄이기 */
+    }
+
+    .law-section a:hover {
+      background-color: #f4f2f2;
+      /* 연한 회색 배경 */
+      color: black;
+    }
+
+    .law-section:last-child {
+      margin-bottom: 60px;
+      /* 원하는 만큼 간격 조절 */
+    }
+
+    .disabled {
+      pointer-events: none;
+      opacity: 0.5;
+    }
+
+    .button.locked {
+      pointer-events: none;
+      opacity: 0.4;
+      cursor: default;
+    }
+
+    .button.unlocked {
+      pointer-events: auto;
+      opacity: 1;
+      cursor: pointer;
+    }
+
+    .top-box {
+      background-color: #fff;
+      border: 1px solid #ddd;
+      padding: 10px;
+      margin-bottom: 10px;
+      /* 원하는 만큼 박스 상하 간격 조절 */
+      border-radius: 5px;
+      margin-top: 5px;
+      /* 기존에 더 크다면 이 값을 줄이세요 */
+    }
+
+    .bottom-box {
+      background-color: #fff;
+      border: 1px solid #ccc;
+      padding: 50px;
+      border-radius: 5px;
+    }
+  </style>
+
+</head>
+
+<body>
+
+  <div class="container">
+    <!-- 상단 닉네임 영역 (top-box) 시작 -->
+    <div class="top-box">
+      <div class="nickname-wrapper">
+        <div class="nickname-box" style="margin-top: 30px; margin-left: 30px;">
+          <input type="text" class="nickname-input" id="nickname-input" placeholder="닉네임 입력">
+          <button class="nickname-button" onclick="saveNickname()">확인</button>
+          <div id="welcome-message" style="display: inline-block; margin-left: 10px;"></div>
+          <small style="display:block; margin-top:5px; color: #f48224;">
+            (닉네임은 2~10자, 한글/영문/숫자만 사용 가능합니다. 특수문자 제외)
+          </small>
+        </div>
+      </div>
+    </div>
+    <!-- 상단 박스 종료 -->
+
+    <!-- 하단 법령 영역 (bottom-box) 시작 -->
+    <div class="bottom-box">
+      <div class="title-section">
+        <h2 style="margin-bottom: 10px; font-size: 1.5rem; font-weight: normal;">
+          문화유산의 보존 및 활용에 관한 법률 (문화유산법)
+        </h2>
+        <p style="margin-bottom: 25px; color: #007bff;">
+          [시행 2025. 2. 14.] [법률 제20286호, 2024. 2. 13., 일부개정]
+        </p>
+      </div>
+
+      <!-- 장별 템플릿 반복 시작 -->
+      <div class="law-section">
+        <h3>문화유산법 (제1장. 제2장)</h3>
+        <a href="https://youtu.be/Lsh375izj1w" target="_blank">유튜브 동영상</a>
+        <a href="https://2024mo-test.github.io/mw1/" target="_blank">시행령. 시행규칙</a>
+        <a href="https://2024mo-test.github.io/mw1/" target="_blank">기출 문제</a>
+        <a href="https://2024mo-test.github.io/mw-5/" target="_blank">예비 모의고사</a>
+      </div>
+
+      <div class="law-section">
+        <h3>문화유산법 (제3장)</h3>
+        <a href="#">유튜브 동영상</a>
+        <a href="#">시행령. 시행규칙</a>
+        <a href="#">기출 문제</a>
+        <a href="#">예비 모의고사</a>
+      </div>
+
+      <div class="law-section">
+        <h3>문화유산법 (제3장의2. 제3장의3)</h3>
+        <a href="#">유튜브 동영상</a>
+        <a href="#">시행령. 시행규칙</a>
+        <a href="#">기출 문제</a>
+        <a href="#">예비 모의고사</a>
+      </div>
+
+      <div class="law-section">
+        <h3>문화유산법 (제4장. 제1절. 제2절 - 제39조)</h3>
+        <a href="#">유튜브 동영상</a>
+        <a href="#">시행령. 시행규칙</a>
+        <a href="#">기출 문제</a>
+        <a href="#">예비 모의고사</a>
+      </div>
+
+      <div class="law-section">
+        <h3>문화유산법 (제4장. 제40조-. 제3절. 제4절)</h3>
+        <a href="#">유튜브 동영상</a>
+        <a href="#">시행령. 시행규칙</a>
+        <a href="#">기출 문제</a>
+        <a href="#">예비 모의고사</a>
+      </div>
+
+      <div class="law-section">
+        <h3>문화유산법 (제6장. 제7장. 제8장. 제9장)</h3>
+        <a href="#">유튜브 동영상</a>
+        <a href="#">시행령. 시행규칙</a>
+        <a href="#">기출 문제</a>
+        <a href="#">예비 모의고사</a>
+      </div>
+
+      <div class="law-section">
+        <h3>문화유산법 (제10장. 제10장의2)</h3>
+        <a href="#">유튜브 동영상</a>
+        <a href="#">시행령. 시행규칙</a>
+        <a href="#">기출 문제</a>
+        <a href="#">예비 모의고사</a>
+      </div>
+
+      <div class="law-section">
+        <h3>문화유산법 (제11장. 제12장)</h3>
+        <a href="#">유튜브 동영상</a>
+        <a href="#">시행령. 시행규칙</a>
+        <a href="#">기출 문제</a>
+        <a href="#">예비 모의고사</a>
+      </div>
+      <!-- 장별 템플릿 반복 끝 -->
+    </div>
+    <script>
+      // 닉네임 저장 및 별 처리
+      document.querySelector('.nickname-button').addEventListener('click', function () {
+        const nickname = document.querySelector('.nickname-input').value.trim();
+
+        // 닉네임 유효성 검사
+        if (
+          nickname.length < 2 || nickname.length > 10 ||
+          /[^가-힣a-zA-Z0-9]/.test(nickname)
+        ) {
+          alert('닉네임은 2~10자, 한글/영문/숫자만 입력 가능합니다.');
+          return;
+        }
+
+        // 닉네임 저장
+        localStorage.setItem('nickname', nickname);
+        document.getElementById('welcome-message').innerText = `${nickname}님, 100점. 화이팅!`;
+
+        // URL에서 별값 추출 후 저장
+        const urlParams = new URLSearchParams(window.location.search);
+        const star = urlParams.get('star');
+        if (star) {
+          const savedStars = JSON.parse(localStorage.getItem(`${nickname}-stars`) || '[]');
+          if (!savedStars.includes(star)) {
+            savedStars.push(star);
+            localStorage.setItem(`${nickname}-stars`, JSON.stringify(savedStars));
+          }
+        }
+      });
+
+      // 닉네임 자동 복원
+      window.onload = function () {
+        const saved = localStorage.getItem('nickname');
+        if (saved) {
+          document.querySelector('.nickname-input').value = saved;
+          document.getElementById('welcome-message').innerText = `${saved}님, 100점. 화이팅!`;
+        }
+        window.scrollTo(0, 0);
+      };
+    </script>
+
+    <script>
+      // 별값 URL에서 추출 → 저장
+      const urlParams = new URLSearchParams(window.location.search);
+      const star = urlParams.get('star');
+      const nickname = localStorage.getItem('nickname');
+      if (star && nickname) {
+        const savedStars = JSON.parse(localStorage.getItem(`${nickname}-stars`) || '[]');
+        if (!savedStars.includes(star)) {
+          savedStars.push(star);
+          localStorage.setItem(`${nickname}-stars`, JSON.stringify(savedStars));
+        }
+      }
+    </script>
+    <script>
+      const storedStars = JSON.parse(localStorage.getItem('stars') || '[]');
+      document.querySelectorAll('.law-section').forEach(section => {
+        const star = section.getAttribute('data-star');
+        const isStarOwned = storedStars.includes(star);
+        const youtube = section.querySelector('.btn-youtube');
+        const contents = section.querySelectorAll('.btn-content');
+
+        if (!isStarOwned) {
+          contents.forEach(btn => btn.classList.add('disabled'));
+        }
+      });
+    </script>
+    <script>
+      document.querySelectorAll('.law-section').forEach(section => {
+        const star = section.getAttribute('data-star');
+        const isStarOwned = storedStars.includes(star);
+        const title = section.querySelector('h3');
+
+        if (isStarOwned) {
+          title.innerHTML += ' ⭐';  // 별표 추가
+        }
+      });
+    </script>
+    <script>
+      const totalRequired = 15;
+      if (storedStars.filter(s => s.startsWith('STAR')).length >= totalRequired) {
+        alert("🎉 축하합니다! 다음 법령으로 이동할 수 있습니다.");
+        // 이후 실제 이동 링크나 버튼 안내도 추가 가능
+      }
+    </script>
+    <script>
+      document.querySelectorAll('.law-section').forEach((section, index, allSections) => {
+        const star = section.getAttribute('data-star');
+        const hasCurrentStar = storedStars.includes(star);
+        const hasPreviousStar = index === 0 || storedStars.includes(allSections[index - 1].getAttribute('data-star'));
+
+        const moigosa = Array.from(section.querySelectorAll('.btn-content'))
+          .find(btn => btn.textContent.includes('예비 모의고사'));
+
+        if (moigosa && (!hasCurrentStar || !hasPreviousStar)) {
+          moigosa.classList.add('disabled');
+        }
+      });
+    </script>
+    <!-- 모든 div, 버튼 등 아래에 위치 -->
+    <script>
+      if (localStorage.getItem("nickname_STAR1")) {
+        document.querySelector("#chapter1-btn").classList.remove("locked");
+        document.querySelector("#chapter1-btn").classList.add("unlocked");
+      }
+    </script>
+</body>
+
+</html>
